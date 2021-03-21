@@ -4,14 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Anagrama</title>
 </head>
 <body>
-    
-    <div>
-        <input type="text" id="input" size="40" />
-        <button id="findButton">Encontrar Anagramas</button>
-      </div>
+
+    <header>
+        <h1>Localizador de Anagramas</h1>
+    </header>
+
+    <main>
+        <p>Anagrama é a reorganização das letras de uma palavra para produzir outras palavras, utilizando todas as letras originais exatamente uma vez.</p>
+        <div id="inputText">
+            <label for="words">Digite aqui a(s) palavra(s)</label>
+            <input name="words" type="text" id="input" size="40" />
+            <button id="findButton">Encontrar Anagramas</button>
+        </div>
+        <div id="anagramResult">
+
+        </div>
+    </main>
+
+    <footer>
+        <address>
+            <p>Paulo Mello</p>
+            <p>Abril/2021</p>
+            <p>Kenzie Academy</p>
+        </address>
+    </footer>
 
     <script type="text/javascript" src="palavras.js"></script>
     <script type="text/javascript" src="anagrams1.js"></script>

@@ -1,0 +1,132 @@
+html, body, header, main, h1, h3, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    --color-text: #151515;
+    --color-background: #eeeeee;
+    --color-head: #67E46F;
+    --color-main: #FFF;
+    --color-footer: #FFB473;
+}
+
+body {
+    background-color: var(--color-background);
+    width: 100%;
+    height: 100vh;
+}
+
+main{
+    width: 100%;
+    padding: 10px;
+    max-width: 750px;
+}
+
+main p{
+    line-height: 1.3rem;
+}
+
+main #inputText {
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main #inputText label{
+    padding-bottom: 5px;
+}
+
+main #inputText input{
+    width: 90%;
+    padding: 5px 2px;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+main #inputText button{
+    margin: 10px;
+    font-size: 1.2rem;
+    padding: 0 25px;
+    line-height: 2rem;
+    color: #025a2b;
+    background-color: #7cf8b6;
+    transition: all ease-in 0.2s;
+}
+
+main #inputText button:hover{
+    color: #7cf8b6;
+    background-color: #025a2b;
+}
+
+main #anagramResult div{
+    padding: 10px;
+    box-shadow: 2px 2px 2px 2px #33333355;
+}
+main #anagramResult div h3{
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    background-color: var(--color-head);
+    color: #008209;
+}
+
+header h1{
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    max-width: 750px;
+}
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-footer);
+    color: #A64D00;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid #A64D00;
+}
+footer address {
+    display: flex;
+    width: 100%;
+    max-width: 750px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+footer address p{
+    margin: 5px;
+    width: 40%;
+    text-align: center;
+}
+footer address p:last-child{
+    flex-grow: 1;
+}
+
+@media only screen and (min-width: 700px) {
+    header h1{
+        margin: auto;
+    }
+
+    main{
+        margin: auto;
+    }
+
+    footer address {
+        margin: auto;
+    }
+    
+}
