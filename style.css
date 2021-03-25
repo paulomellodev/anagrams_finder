@@ -66,6 +66,10 @@ main #inputText button:hover{
     background-color: #025a2b;
 }
 
+main #anagramResult{
+    margin-bottom: 65px;
+}
+
 main #anagramResult div{
     padding: 10px;
     box-shadow: 2px 2px 2px 2px #33333355;
@@ -89,7 +93,7 @@ header h1{
 
 footer {
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     background-color: var(--color-footer);
@@ -104,11 +108,10 @@ footer address {
     max-width: 750px;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 10px 0;
 }
 
 footer address p{
-    margin: 5px;
+    margin: 0 5px;
     width: 40%;
     text-align: center;
 }
