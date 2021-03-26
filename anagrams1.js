@@ -9,7 +9,6 @@ function findAnagrams(typedWordsAlphabetical, result, db){
   db.map(word => {
     let wordAlpha = alphabetize(word);
     for (let i = 0; i < typedWordsAlphabetical.length; i++){
-      //se for igual colocar no array correspondente
       if(wordAlpha === typedWordsAlphabetical[i]){
         output[i].push(word)
       } 
@@ -37,32 +36,38 @@ function getAnagramsOf(input, db){
 }
 
 
-function printResult(anagrams) {  
-
-  let resultDiv = document.getElementById("anagramResult");
-  resultDiv.innerHTML = "";
-
+function createDiv(anagrams){
+  let createDiv = document.createElement('div')
+  
   let newHeader = document.createElement('h3')
   newHeader.textContent = 'Palavras encontradas';
-
-  let createDiv = document.createElement('div')
-
-  createDiv.appendChild(newHeader)
   
+  createDiv.appendChild(newHeader)
+ 
   for (let i = 0; i < anagrams.length; i++){
     let paragraphContent = anagrams[i].join(' ')
     let newParagraph = document.createElement('p')
     newParagraph.textContent = paragraphContent
     createDiv.appendChild(newParagraph)   
   }
-  resultDiv.appendChild(createDiv)
+  return createDiv
 }
+
+
+function printResult(anagrams) {  
+  let resultDiv = document.getElementById("anagramResult");
+  resultDiv.innerHTML = "";
+  let createdDiv = createDiv(anagrams)
+  resultDiv.appendChild(createdDiv)
+}
+
 
 function filterWordsByLength(size, db){
   let filteredWords = [];
   filteredWords = db.filter(word => word.length === size)
   return filteredWords
 }
+
 
 function longestWord(db) {
   let maxLength = 0
@@ -80,47 +85,42 @@ function getSetsOfFiveAnagrams(db) {
   let maxLength = longestWord(db)
 
   for(let wordsLength = 1; wordsLength <= maxLength; wordsLength++){
-    
+    let result = {}
     let filteredWords = filterWordsByLength(wordsLength, db)
-    console.log(filteredWords)
 
-    for(let indexFilteredWord = 0; indexFilteredWord < filteredWords.length - 5;){
-      let wordAlphabetical = alphabetize(filteredWords[indexFilteredWord])
-      
-      filteredWords.splice(0, 1)
-      
-      let result = []
-      
-      filteredWords.map((word, index) => {
-        let wordAlpha = alphabetize(word);
-        if(wordAlpha === wordAlphabetical){
-            result.push(word)
-            filteredWords.splice(index, 1)
-        } 
-      })
-      if(result.length >=5 ){
-        output.push(result)
+    filteredWords.map(item => {
+      let wordAlphabetical = alphabetize(item)
+      if(result[wordAlphabetical] === undefined) {
+        result[wordAlphabetical] = [item];
+      } else {
+        result[wordAlphabetical].push(item);
+      }
+    })
+    
+    for(item in result){
+      if(result[item].length >= 5){
+          output.push(result[item])
       }
     }
-    console.log(output)
   }
-
   return output
 }
 
 
+const btnFindAnagrams = document.getElementById("findButton");
 
-const button = document.getElementById("findButton");
-
-button.addEventListener("click", function () {
-
+btnFindAnagrams.addEventListener("click", function () {
   let typedText = document.getElementById("input").value;
-
   let typedWords = words(typedText);
-
   let anagrams = getAnagramsOf(typedWords, palavras);
-  console.log(anagrams)
   printResult(anagrams);
+});
 
+  
+const btnSetsOfAnagrams = document.getElementById("setsOfAnagrams");
+
+btnSetsOfAnagrams.addEventListener("click", function () {
+  let anagrams = getSetsOfFiveAnagrams(palavras);
+  printResult(anagrams);
 });
   
