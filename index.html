@@ -4,26 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <title>Anagrama</title>
 </head>
 <body>
 
     <header>
-        <h1>Localizador de Anagramas</h1>
+        <h1>Anagramas</h1>
     </header>
 
     <main>
-        <p>Anagrama é a reorganização das letras de uma palavra para produzir outras palavras, utilizando todas as letras originais exatamente uma vez.</p>
-        <div id="inputText">
-            <label for="words">Digite aqui a(s) palavra(s)</label>
-            <input name="words" type="text" id="input" size="40" />
-            <button id="findButton">Encontrar Anagramas</button>
-            <button id="setsOfAnagrams">Anagramas (5 ou mais)</button>
-        </div>
-        <div id="anagramResult">
+        
+        <p><strong>Anagrama</strong> é a reorganização das letras de uma palavra para produzir outras palavras, utilizando todas as letras originais exatamente uma vez.</p>
+        
+        <section id="menu" class="menu">
+            <ul>
+                <li id="btnFindAnagramsSection">Procurar Anagramas</li>
+                <li id="btnSetsOfAnagramsSection">Anagramas (5 ou mais)</li>
+                <li id="btnTwoWordAnagramsSection">2 Anagramas</li>
+                <li id="btnThreeWordAnagramsSection">3 Anagramas</li>
+            </ul>
+        </section>
 
-        </div>
+        <section id="findAnagrams" class="hidden">
+            <div id="inputText">
+                <label for="words">Digite aqui a(s) palavra(s)</label>
+                <input name="words" type="text" id="input" size="40"/>
+                <button id="btnFindAnagrams">Encontrar Anagramas</button>
+            </div>
+            <div id="anagramsResult"></div>
+        </section>
+
+        <section id="setsOfAnagrams" class="hidden">
+            <p>Palavras que possuem de 5 ou mais Anagramas</p>
+            <button id="btnSetsOfAnagrams">Encontrar Anagramas</button>
+            <div id="setAnagramsResult"></div>
+        </section>
+    
+        <section id="twoWordAnagrams" class="">
+            <p>Anagramas de duas palavras</p>
+            <div id="inputText2">
+                <label for="words">Digite aqui a(s) palavra(s)</label>
+                <input name="words" type="text" id="input2" size="40"/>
+                <button id="btnTwoWordAnagrams">Encontrar Anagramas com 2 palavras</button>
+            </div>
+            <div id="twoWordAnagramsResult"></div>
+        </section>
+
+        <section id="threeWordAnagrams" class="hidden">
+            <p>Anagramas de três palavras</p>
+            <div id="inputText3">
+                <label for="words">Digite aqui a(s) palavra(s)</label>
+                <input name="words" type="text" id="input3" size="40"/>
+                <button id="btnThreeWordAnagrams">Encontrar Anagramas</button>
+            </div>
+            <div id="threeWordAnagramsResult"></div>
+        </section>
+    
     </main>
 
     <footer>
@@ -34,7 +71,10 @@
         </address>
     </footer>
 
-    <script type="text/javascript" src="palavras.js"></script>
-    <script type="text/javascript" src="anagrams1.js"></script>
+    <div id="loadingPage" class="loadingPage"></div>
+
+    <script type="text/javascript" src="./scripts/palavras.js"></script>
+    <script type="text/javascript" src="./scripts/anagrams1.js"></script>
+    <script type="text/javascript" src="./scripts/setsAnagrams.js"></script>
 </body>
 </html>

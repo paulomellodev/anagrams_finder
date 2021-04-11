@@ -26,6 +26,10 @@ main{
     max-width: 750px;
 }
 
+.hidden{
+    display: none;
+}
+
 main p{
     line-height: 1.3rem;
 }
