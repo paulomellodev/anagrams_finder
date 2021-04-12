@@ -23,7 +23,9 @@ function getSetsOfAnagrams(db) {
 // criar conjuntos de anagramas por tamanho de palavras
 const setsOfAnagrams = getSetsOfAnagrams(palavras)
 
-// criar array com to
+
+
+// criar array de anagramsa com cinco ou mais palavras
 const getSetsOfFiveAnagrams = () => {
     const setsOfFive = {};
     for(let i = 0; i < setsOfAnagrams.length; i++) {
@@ -51,6 +53,8 @@ const verifyInput = (input, key) => {
     }
     return true
 }
+
+
 
 //2 anagramas
 const getAnagramsOfTwoWords = (text) => {
@@ -99,4 +103,67 @@ btnTwoWords.addEventListener('click', () => {
 });
 
 
+
 //3 anagramas
+const btnThreeWords = document.getElementById("btnThreeWordAnagrams");
+btnThreeWords.addEventListener('click', () => {
+    
+    let resultDiv = document.getElementById("threeWordAnagramsResult");
+    resultDiv.innerHTML = "";
+    
+    // pegar o texto digitado e coloca-lo em ordem
+    let typedText = document.getElementById("input3").value;
+    let alphabeticalSentence = alphabetize(typedText);
+    
+    // verificar quantas letras possui o texto digitado
+    let threeAnagrams = getAnagramsOfThreeWords(alphabeticalSentence)
+    console.log(threeAnagrams)
+
+    resultDiv.appendChild(createDiv(threeAnagrams))
+});
+
+const getAnagramsOfThreeWords = (text) => {
+    let output = []
+    let possibleWords = []
+    let textLength = text.length;
+    
+    for(let i = 0; i < textLength-1; i++){
+        let set = setsOfAnagrams[i]
+        let result = {}
+        
+        //verificar se letras do DB estão contidas nas palavras digitadas
+        for(word in set){
+            if(verifyInput(text, word)) {
+                result[word] = set[word]    
+            }
+        }
+        possibleWords.push(result)
+    }
+    
+    // iterar sobre os conjuntos selecionados
+    for(let setOneIndex = 1; setOneIndex <= textLength-setOneIndex; setOneIndex++){
+        let firstSet = possibleWords[setOneIndex]
+
+        for(let setTwoIndex = setOneIndex; setTwoIndex <= textLength-(setOneIndex+setTwoIndex); setTwoIndex++ ){
+            let secondSet = possibleWords[setTwoIndex]
+            let setLastIndex = textLength-(setOneIndex+setTwoIndex);
+            let lastSet = possibleWords[setLastIndex]
+
+            for(word1 in firstSet){
+                for(word2 in secondSet){
+                    let partial = alphabetize(word1 + word2)
+                    if(verifyInput(text, partial)){
+                        for(word3 in lastSet){
+                            let complete = alphabetize(partial + word3)
+                            if(complete === text){
+                                output.push(`[${firstSet[word1]}] + [${secondSet[word2]}] + [${lastSet[word3]}]`)
+                            }                            
+                        }
+                    }
+                }
+            }
+        }
+    
+    }
+    return output
+}
