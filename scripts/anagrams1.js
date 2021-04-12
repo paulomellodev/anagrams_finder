@@ -1,38 +1,28 @@
-const findAnagramsSection = document.getElementById("findAnagrams");
-const setsOfAnagramsSection = document.getElementById("setsOfAnagrams");
-const twoWordAnagramsSection = document.getElementById("twoWordAnagrams");
-const threeWordAnagramsSection = document.getElementById("threeWordAnagrams");
+const menu = document.getElementById('menu')
+menu.addEventListener('click', (event) => {
+    let target = event.currentTarget.children;
+    let clickedElement = event.target.id;
+    changePage(clickedElement, target)
 
-const btnFindAnagramsSection = document.getElementById("btnFindAnagramsSection");
-const btnSetsOfAnagramsSection = document.getElementById("btnSetsOfAnagramsSection");
-const btnTwoWordAnagramsSection = document.getElementById("btnTwoWordAnagramsSection");
-const btnThreeWordAnagramsSection = document.getElementById("btnThreeWordAnagramsSection");
-
-btnFindAnagramsSection.addEventListener('click', () => {
-    findAnagramsSection.classList.remove('hidden')
-    setsOfAnagramsSection.classList.add('hidden')
-    twoWordAnagramsSection.classList.add('hidden')
-    threeWordAnagramsSection.classList.add('hidden')
-})
-btnSetsOfAnagramsSection.addEventListener('click', () =>{
-    findAnagramsSection.classList.add('hidden')
-    setsOfAnagramsSection.classList.remove('hidden')
-    twoWordAnagramsSection.classList.add('hidden')
-    threeWordAnagramsSection.classList.add('hidden')
-})
-btnTwoWordAnagramsSection.addEventListener('click', () =>{
-    findAnagramsSection.classList.add('hidden')
-    setsOfAnagramsSection.classList.add('hidden')
-    twoWordAnagramsSection.classList.remove('hidden')
-    threeWordAnagramsSection.classList.add('hidden')
-})
-btnThreeWordAnagramsSection.addEventListener('click', () =>{
-    findAnagramsSection.classList.add('hidden')
-    setsOfAnagramsSection.classList.add('hidden')
-    twoWordAnagramsSection.classList.add('hidden')
-    threeWordAnagramsSection.classList.remove('hidden')
 })
 
+const sections = ['findAnagrams', 'setsOfAnagrams', 'twoWordAnagrams', 'threeWordAnagrams']
+const changePage = (clicked, childTarget) => {
+    for (let element = 0; element < childTarget.length; element++){
+        const idElement = childTarget[element].id;
+        const section = sections[element]
+        const sectionToChange = document.getElementById(section);
+        const divToChange = document.getElementById(idElement);
+
+        if(idElement === clicked){
+            divToChange.classList.add('active')
+            sectionToChange.classList.remove('hidden')
+        } else {
+            divToChange.classList.remove('active')
+            sectionToChange.classList.add('hidden')
+        }
+    };
+}
 
 function alphabetize(wordToAlphabetical) {
     return wordToAlphabetical.toLowerCase().split('').sort().join('').trim();

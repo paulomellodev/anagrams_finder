@@ -17,46 +17,48 @@
         
         <p><strong>Anagrama</strong> é a reorganização das letras de uma palavra para produzir outras palavras, utilizando todas as letras originais exatamente uma vez.</p>
         
-        <section id="menu" class="menu">
-            <ul>
-                <li id="btnFindAnagramsSection">Procurar Anagramas</li>
-                <li id="btnSetsOfAnagramsSection">Anagramas (5 ou mais)</li>
-                <li id="btnTwoWordAnagramsSection">2 Anagramas</li>
-                <li id="btnThreeWordAnagramsSection">3 Anagramas</li>
+        <section class="menu">
+            <ul id="menu">
+                <li id="btnFindAnagramsSection" class="active">Procurar Anagramas</li>
+                <li id="btnSetsOfAnagramsSection">5+ Anagramas</li>
+                <li id="btnTwoWordAnagramsSection">Anagramas de 2 palavras</li>
+                <li id="btnThreeWordAnagramsSection">Anagramas de 3 palavras</li>
             </ul>
         </section>
 
-        <section id="findAnagrams" class="hidden">
-            <div id="inputText">
+        <section id="findAnagrams" class="">
+            <div id="inputText" class="inputText">
                 <label for="words">Digite aqui a(s) palavra(s)</label>
                 <input name="words" type="text" id="input" size="40"/>
-                <button id="btnFindAnagrams">Encontrar Anagramas</button>
+                <button id="btnFindAnagrams" class="btnDesign">Encontrar Anagramas</button>
             </div>
             <div id="anagramsResult"></div>
         </section>
 
         <section id="setsOfAnagrams" class="hidden">
-            <p>Palavras que possuem de 5 ou mais Anagramas</p>
-            <button id="btnSetsOfAnagrams">Encontrar Anagramas</button>
+            <h3>Palavras que possuem de 5 ou mais Anagramas</h3>
+            <div class="inputText">
+                <button id="btnSetsOfAnagrams" class="btnDesign">Mostrar Anagramas</button>
+            </div>
             <div id="setAnagramsResult"></div>
         </section>
     
         <section id="twoWordAnagrams" class="hidden">
-            <p>Anagramas de duas palavras</p>
-            <div id="inputText2">
+            <h3>Anagramas de DUAS Palavras</h3>
+            <div id="inputText2" class="inputText">
                 <label for="words">Digite aqui a(s) palavra(s)</label>
                 <input name="words" type="text" id="input2" size="40"/>
-                <button id="btnTwoWordAnagrams">Encontrar Anagramas com 2 palavras</button>
+                <button id="btnTwoWordAnagrams" class="btnDesign">Encontrar Anagramas</button>
             </div>
             <div id="twoWordAnagramsResult"></div>
         </section>
 
-        <section id="threeWordAnagrams" class="">
-            <p>Anagramas de três palavras</p>
-            <div id="inputText3">
+        <section id="threeWordAnagrams" class="hidden">
+            <h3>Anagramas de TRÊS palavras</h3>
+            <div id="inputText3" class="inputText">
                 <label for="words">Digite aqui a(s) palavra(s)</label>
                 <input name="words" type="text" id="input3" size="40"/>
-                <button id="btnThreeWordAnagrams">Encontrar Anagramas</button>
+                <button id="btnThreeWordAnagrams" class="btnDesign">Encontrar Anagramas</button>
             </div>
             <div id="threeWordAnagramsResult"></div>
         </section>
