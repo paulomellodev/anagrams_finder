@@ -65,17 +65,20 @@ const getAnagramsOfTwoWords = (text) => {
     for(let i = 1; i <= textLength-i; i++){
         // quais conjuntos serão utilizados
         let firstSet = setsOfAnagrams[i]
-        let lastSet = setsOfAnagrams[textLength-i];
         
-        // iterar sobre os conjuntos selecionados
-        for(item in firstSet){
-            if(verifyInput(text, item)){
-                for(item2 in lastSet){
-                    if(verifyInput(text, item2)){
-                        let partial = alphabetize(item+item2)
-                        if(partial === text){
-                            // criar output com dados que batem
-                            output.push(`[${firstSet[item]}] + [${lastSet[item2]}]`)
+        if(textLength-i <= maxLength){
+            let lastSet = setsOfAnagrams[textLength-i];
+            
+            // iterar sobre os conjuntos selecionados
+            for(item in firstSet){
+                if(verifyInput(text, item)){
+                    for(item2 in lastSet){
+                        if(verifyInput(text, item2)){
+                            let partial = alphabetize(item+item2)
+                            if(partial === text){
+                                // criar output com dados que batem
+                                output.push(`[${firstSet[item]}] + [${lastSet[item2]}]`)
+                            }
                         }
                     }
                 }
@@ -143,27 +146,30 @@ const getAnagramsOfThreeWords = (text) => {
     // iterar sobre os conjuntos selecionados
     for(let setOneIndex = 1; setOneIndex <= textLength-setOneIndex; setOneIndex++){
         let firstSet = possibleWords[setOneIndex]
-
+        
         for(let setTwoIndex = setOneIndex; setTwoIndex <= textLength-(setOneIndex+setTwoIndex); setTwoIndex++ ){
             let secondSet = possibleWords[setTwoIndex]
             let setLastIndex = textLength-(setOneIndex+setTwoIndex);
-            let lastSet = possibleWords[setLastIndex]
+            console.log(setOneIndex, setTwoIndex, setLastIndex)
+            
+            if(setLastIndex <= maxLength+1) {
 
-            for(word1 in firstSet){
-                for(word2 in secondSet){
-                    let partial = alphabetize(word1 + word2)
-                    if(verifyInput(text, partial)){
-                        for(word3 in lastSet){
-                            let complete = alphabetize(partial + word3)
-                            if(complete === text){
-                                output.push(`[${firstSet[word1]}] + [${secondSet[word2]}] + [${lastSet[word3]}]`)
-                            }                            
+                let lastSet = possibleWords[setLastIndex]
+                for(word1 in firstSet){
+                    for(word2 in secondSet){
+                        let partial = alphabetize(word1 + word2)
+                        if(verifyInput(text, partial)){
+                            for(word3 in lastSet){
+                                let complete = alphabetize(partial + word3)
+                                if(complete === text){
+                                    output.push(`[${firstSet[word1]}] + [${secondSet[word2]}] + [${lastSet[word3]}]`)
+                                }                            
+                            }
                         }
                     }
                 }
             }
         }
-    
     }
     return output
 }
